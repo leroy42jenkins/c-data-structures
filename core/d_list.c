@@ -88,7 +88,7 @@ void * d_list_pop_front(d_list *list) {
 		list->front = t;
 	}
 
-	list->size -=1;
+	list->size -= 1;
 	return element;
 }
 

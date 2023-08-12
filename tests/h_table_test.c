@@ -474,7 +474,7 @@ int main(int argc, char **argv) {
 	};
 
 	run_tests_display_results(argc, argv, tests, 9);
-	printf("\n");
+
 	return 0;
 }
 
