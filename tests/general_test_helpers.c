@@ -47,7 +47,7 @@ void run_tests_display_results(
 	} else {
 		int index = atoi(argv[1]);
 
-		if (index < 0 || index >= n_tests) {
+		if (index < 0 || ((size_t)index) >= n_tests) {
 			printf("test not found\n");
 		} else {
 			tests[index](&t_r);

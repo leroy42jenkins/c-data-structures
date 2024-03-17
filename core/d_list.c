@@ -117,10 +117,8 @@ void * d_list_pop_back(d_list *list) {
 void d_list_destroy(d_list **list) {
 	if (list == NULL || *list == NULL) return;
 	
-	void *element = NULL;
-	
 	while ((*list)->size > 0)
-		element = d_list_pop_front(*list);
+		d_list_pop_front(*list);
 	
 	free(*list);
 	*list = NULL;

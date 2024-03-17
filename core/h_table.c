@@ -44,13 +44,13 @@ int h_table_contains(h_table *table, void *element, size_t (*hash)(void *), int 
 	size_t h_value = hash(element);
 	size_t index = h_value % table->size;
 
-        s_list *current = table->buckets[index];
+	s_list *current = table->buckets[index];
 
-        while (current != NULL) {
-                int r = compare(element, current->element);
-                if (r == 0) return 0;
+	while (current != NULL) {
+		int r = compare(element, current->element);
+		if (r == 0) return 0;
 		current = current->next;
-        }
+	}
 
 	return -1;
 }
@@ -64,8 +64,8 @@ void * h_table_remove(h_table *table, void *element, size_t (*hash)(void *), int
 	s_list *last = NULL;
 	s_list *current = table->buckets[index];
 
-        while (current != NULL) {
-                int r = compare(element, current->element);   
+	while (current != NULL) {
+		int r = compare(element, current->element);   
                 
 		if (r == 0) {
 			void *e = current->element;
@@ -87,7 +87,7 @@ void * h_table_remove(h_table *table, void *element, size_t (*hash)(void *), int
 
 		last = current;
 		current = current->next;
-        }
+    }
 
 	return NULL;
 }
