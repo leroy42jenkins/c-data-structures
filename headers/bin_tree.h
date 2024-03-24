@@ -12,8 +12,8 @@
 
 typedef struct bin_tree_t {
     void *element;
-	bin_tree_t *left;
-    bin_tree_t *right;
+	struct bin_tree_t *left;
+    struct bin_tree_t *right;
 } bin_tree;
 
 bin_tree * bin_tree_create(void *);
@@ -21,6 +21,10 @@ bin_tree * bin_tree_create(void *);
 bin_tree * bin_tree_insert(bin_tree *, void *, int (*)(void *, void *));
 
 int bin_tree_contains(bin_tree *, void *, int (*)(void *, void *));
+
+void * bin_tree_min(bin_tree *);
+
+void * bin_tree_max(bin_tree *);
 
 bin_tree * bin_tree_remove(bin_tree *, void *, int (*)(void *, void *));
 

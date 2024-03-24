@@ -45,6 +45,18 @@ int bin_tree_contains(bin_tree *node, void *element, int (*compare)(void *a, voi
     return 0;
 }
 
+void * bin_tree_min(bin_tree *node) {
+    if (node == NULL) return NULL;
+    if (node->left == NULL) return node->element;
+    return bin_tree_min(node->left);
+}
+
+void * bin_tree_max(bin_tree *node) {
+    if (node == NULL) return NULL;
+    if (node->right == NULL) return node->element;
+    return bin_tree_min(node->right);
+}
+
 bin_tree * bin_tree_remove(bin_tree *node, void *element, int (*compare)(void *a, void *b)) {
     if (node == NULL) return NULL;
 
@@ -52,13 +64,28 @@ bin_tree * bin_tree_remove(bin_tree *node, void *element, int (*compare)(void *a
 
     if (r < 0) {
         node->left = bin_tree_remove(node->left, element, compare);
-        return node;
     } else if (r > 0) {
         node->right = bin_tree_remove(node->right, element, compare);
-        return node;
+    } else {
+        if (node->left == NULL && node->right == NULL) {
+            free(node);
+            node = NULL;
+        } else if (node->left == NULL) {
+            bin_tree *right = node->right;
+            free(node);
+            node = right;
+        } else if (node->right == NULL) {
+            bin_tree *left = node->left;
+            free(node);
+            node = left;
+        } else {
+            void *max = bin_tree_max(node->left);
+            node->element = max;
+            node->left = bin_tree_remove(node->left, element, compare);
+        }
     }
 
-    // TODO: fill in ...
+    return node;
 }
 
 bin_tree * bin_tree_destroy(bin_tree *node) {
