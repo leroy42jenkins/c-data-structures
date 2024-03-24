@@ -79,8 +79,8 @@ bin_tree * bin_tree_remove(bin_tree *node, void *element, int (*compare)(void *a
             free(node);
             node = left;
         } else {
-            void *max = bin_tree_max(node->left);
-            node->element = max;
+            void *left_max = bin_tree_max(node->left);
+            node->element = left_max;
             node->left = bin_tree_remove(node->left, element, compare);
         }
     }
