@@ -18,6 +18,8 @@ typedef struct test_0_t {
 
 void test_0_configure(test_0 *, int, char);
 
+void test_0_copy(test_0 *, test_0 *);
+
 test_0 * test_0_create(int, char);
 
 int test_0_compare(void *, void *);

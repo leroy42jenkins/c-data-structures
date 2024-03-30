@@ -10,6 +10,15 @@ void test_0_configure(test_0 *t, int n, char c) {
 	t->s[4] = '\0';
 }
 
+void test_0_copy(test_0 *t, test_0 *u) {
+	u->n = t->n;
+	u->s[0] = t->s[0];
+	u->s[1] = t->s[1];
+	u->s[2] = t->s[2];
+	u->s[3] = t->s[3];
+	u->s[4] = t->s[4];
+}
+
 test_0 * test_0_create(int n, char c) {
 	test_0 *t = malloc(sizeof (test_0));	
 	if (t == NULL) return NULL;
